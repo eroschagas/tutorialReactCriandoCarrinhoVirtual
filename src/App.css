@@ -19,4 +19,10 @@
   margin-left: 5px;
 }
 
+.btn-increment, .btn-reduction {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=app.css.map */
