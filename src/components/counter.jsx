@@ -4,14 +4,7 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        <div
-          style={{
-            width: "50px",
-            display: "inline-block",
-            textAlign: "center",
-            marginRight: "10px",
-          }}
-        >
+        <div className="counter-container">
           <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         </div>
         <button
