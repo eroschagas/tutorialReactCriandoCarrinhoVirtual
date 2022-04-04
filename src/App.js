@@ -5,13 +5,28 @@ import Counters from "./components/counters";
 
 class App extends Component {
   state = {
-    counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 },
-    ],
+    counters: [],
   };
+  handleAddCounter = () => {
+    if (!this.state.counters.length) {
+      this.setState({
+        counters: [{ id: 1, value: 0 }],
+      });
+    } else {
+      var newId = this.state.counters.reduce(function (prev, current) {
+        if (+current.id > +prev.id) {
+          return current;
+        } else {
+          return prev;
+        }
+      });
+      var newIdNum = newId.id;
+      this.setState({
+        counters: [...this.state.counters, ...[{ id: newIdNum + 1, value: 0 }]],
+      });
+    }
+  };
+
   handleDelete = (counterId) => {
     const counters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters });
@@ -53,6 +68,7 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onReduction={this.handleReduction}
             onDelete={this.handleDelete}
+            onAddCounter={this.handleAddCounter}
           />
         </main>
       </React.Fragment>
